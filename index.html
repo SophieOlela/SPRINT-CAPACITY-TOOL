@@ -19,8 +19,7 @@
                 <h1 class="text-3xl font-black text-slate-800 tracking-tight">SPRINT CAPACITY TOOL</h1>
                 <p class="text-slate-500 text-sm italic font-medium">Precision planning for predictable delivery</p>
             </div>
-            <button onclick="exportData()" class="bg-slate-800 hover:bg-slate-700 text-white px-5 py-2 rounded-lg text-sm font-bold transition shadow-lg">Export Backup</button>
-        </header>
+            </header>
 
         <div class="card p-6 mb-8 border-l-8 border-blue-600">
             <h2 class="text-xs font-black uppercase tracking-widest mb-4 text-blue-600">Global Settings</h2>
@@ -57,14 +56,9 @@
 
         <div id="sprintsContainer" class="space-y-12 mb-20"></div>
 
-        <div class="mt-20 border-t border-slate-200 pt-10 pb-20 flex flex-col items-center gap-4">
-            <p class="text-sm font-bold text-slate-400 italic">Reference for absences and vacations:</p>
-            <a href="https://docs.google.com/spreadsheets/d/1CqjocwnpSPBVAUcsjZXSLhURI4uaZk3RURAo8VGWTco/edit?gid=2133351643#gid=2133351643" 
-               target="_blank" 
-               class="bg-green-600 text-white px-8 py-3 rounded-full font-black text-sm hover:bg-green-700 transition shadow-lg flex items-center gap-2 uppercase tracking-wider">
-                🟢 Attendance Tracker (Google Sheet)
-            </a>
-        </div>
+        <footer class="mt-20 border-t border-slate-200 py-10 text-center text-xs text-slate-400">
+            &copy; 2026 Sprint Capacity Tool - Contact: sophie.olela@adeo.com
+        </footer>
     </div>
 
     <script>
@@ -182,7 +176,7 @@
         function renderSprints() {
             const container = document.getElementById('sprintsContainer');
             if (appData.sprints.length === 0) {
-                container.innerHTML = '<p class="text-center text-slate-400 py-10 font-medium italic italic">No sprints calculated yet.</p>';
+                container.innerHTML = '<p class="text-center text-slate-400 py-10 font-medium italic">No sprints calculated yet.</p>';
                 return;
             }
 
@@ -251,14 +245,6 @@
 
         function save() { localStorage.setItem('capacitif_v5', JSON.stringify(appData)); }
         
-        function exportData() {
-            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(appData));
-            const dl = document.createElement('a');
-            dl.setAttribute("href", dataStr);
-            dl.setAttribute("download", "sprint_backup.json");
-            dl.click();
-        }
-
         init();
     </script>
 </body>
